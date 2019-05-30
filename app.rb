@@ -2,6 +2,7 @@ require 'sinatra'
 set :session_secret, 'super secret'
 # my_app.rb
 require 'sinatra/base'
+require 'player'
 
 class Battle < Sinatra::Base
   enable :sessions
@@ -19,8 +20,8 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player1 = session[:message_player1]
-    @player2 = session[:message_player2]
+    @player1 = Player.new(session[:message_player1]).name
+    @player2 = Player.new(session[:message_player2]).name
    
     @p2points = session[:p2points] 
     
