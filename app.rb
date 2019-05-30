@@ -3,6 +3,7 @@ set :session_secret, 'super secret'
 # my_app.rb
 require 'sinatra/base'
 require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
   enable :sessions
