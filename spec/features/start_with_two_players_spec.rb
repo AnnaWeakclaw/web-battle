@@ -3,11 +3,14 @@
 
 feature "two names" do
   scenario "fill in the form" do
-    visit("/")
-    fill_in :player1, with: "Bob"
-    fill_in :player2, with: "Emma"
+    sign_and_play
 
-    click_button "Play!"
     expect(page).to have_content("Bob")
+  end
+
+  scenario "displays points for player 2" do
+    sign_and_play
+  
+    expect(page).to have_content("20")
   end
 end
