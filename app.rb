@@ -2,7 +2,7 @@ require 'sinatra'
 set :session_secret, 'super secret'
 # my_app.rb
 require 'sinatra/base'
-require 'player'
+require './lib/player'
 
 class Battle < Sinatra::Base
   enable :sessions
@@ -12,23 +12,22 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    $player1 = Player.new(params[:player1]).name
-    $player2 = Player.new(params[:player2]).name
-    session[:p2points] = 100
-    session[:p1points] = 100
+    $player1 = Player.new(params[:player1])
+    $player2 = Player.new(params[:player2])
+    $game = Game.new($player1, $player2)
     redirect '/play'
   end
 
   get '/play' do
     
    
-    @p2points = session[:p2points] 
+    @p2points = $player2.points
     
     erb :play
   end
 
   post '/attack' do
-    session[:p2points] = session[:p2points] -  5
+    $game.attack
     redirect '/play'
   end
   # start the server if ruby file executed directly
