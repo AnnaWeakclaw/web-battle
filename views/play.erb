@@ -1,4 +1,7 @@
 <h1>"Hi <%=@player1%>, you are Player 1</h1>
 <h1>"Hi <%=@player2%>, you are Player 2</h1>
 
-<h2>Player 2 has 20 points</h2>
+<form action="/attack" method="post">
+<input type="submit" name="reduce" value="Attack">
+</form>
+<h2>Player 2 has <%=@p2points%> points</h2>
