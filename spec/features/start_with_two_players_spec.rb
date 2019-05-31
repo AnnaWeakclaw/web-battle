@@ -31,4 +31,9 @@ feature "two players" do
     expect(page).to have_content("Emma is making a move")
   end
 
+  scenario "displays points for player 1" do
+    sign_and_play
+    expect(page).to have_content("Player 1 has 100 points")
+  end
+
 end

@@ -20,12 +20,11 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @p2points = $game.player2.points
     erb :play
   end
 
   post '/attack' do
-    $game.attack
+    $game.attack($game.current_turn)
     $game.switch_turn
     redirect '/play'
   end

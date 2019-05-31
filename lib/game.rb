@@ -1,13 +1,14 @@
 class Game
-  attr_accessor :player1, :player2, :current_turn
+  attr_accessor :player1, :player2
+  attr_reader :current_turn
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
     @current_turn = player1
   end
-  
-  def attack
-    @player2.points -= 10
+
+  def attack(opposition)
+    opposition == @player1 ? @player1.points = @player1.points - 10 : @player2.points -= 10
   end
 
   def switch_turn 
@@ -15,6 +16,6 @@ class Game
   end
 
   def other(player)
-    player == player1 ? player2 : player1
+    player == @player1 ? @player2 : @player1
   end
 end
