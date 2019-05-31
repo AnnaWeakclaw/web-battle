@@ -20,15 +20,13 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    
-   
     @p2points = $game.player2.points
-    
     erb :play
   end
 
   post '/attack' do
     $game.attack
+    $game.switch_turn
     redirect '/play'
   end
   # start the server if ruby file executed directly

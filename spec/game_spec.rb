@@ -8,4 +8,12 @@ describe Game do
     allow(player1).to receive(:points)
     expect(game).to respond_to(:attack) 
   end
+
+  it "knows whose turn it is" do
+    expect(game.current_turn).to eq(player1)
+  end
+
+  it "can switch turns" do
+    expect(game.switch_turn).to eq(player2)
+  end
 end

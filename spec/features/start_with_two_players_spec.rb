@@ -19,4 +19,16 @@ feature "two players" do
     expect(page).to have_content("90")
   end
 
+  scenario "whose turn is it" do
+    sign_and_play
+    expect(page).to have_content("Bob is making a move")
+  end
+
+  scenario "player 1 attacked and now..." do
+    sign_and_play
+    click_button "Attack"
+    #click_link 'done'
+    expect(page).to have_content("Emma is making a move")
+  end
+
 end
