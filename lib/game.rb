@@ -7,8 +7,8 @@ class Game
     @current_turn = player1
   end
 
-  def attack(opposition)
-    opposition == @player1 ? @player1.points = @player1.points - 10 : @player2.points -= 10
+  def attack(i_attack_my_opposition)
+    i_attack_my_opposition == @player1 ? @player2.points -= 10 : @player1.points -= 10
   end
 
   def switch_turn 
