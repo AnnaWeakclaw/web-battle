@@ -36,4 +36,13 @@ feature "two players" do
     expect(page).to have_content("Player 1 has 100 points")
   end
 
+  scenario "allows a player to lose the game" do
+    sign_and_play
+    19.times {
+      click_button "Attack"
+    }
+
+    expect(page).to have_content("You Lost!")
+  end
+
 end

@@ -26,7 +26,12 @@ class Battle < Sinatra::Base
   post '/attack' do
     $game.attack($game.current_turn)
     $game.switch_turn
+    redirect '/result' if $game.current_turn.points == 0
     redirect '/play'
+  end
+
+   get '/result' do
+   "You Lost!"
   end
   # start the server if ruby file executed directly
   run! if app_file == $0
