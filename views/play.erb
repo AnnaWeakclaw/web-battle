@@ -1,11 +1,11 @@
-<h1>"Hi <%=$game.player1.name%>, you are Player 1</h1>
-<h1>"Hi <%=$game.player2.name%>, you are Player 2</h1>
+<h1>"Hi <%=@game.player1.name%>, you are Player 1</h1>
+<h1>"Hi <%=@game.player2.name%>, you are Player 2</h1>
 
 <form action="/attack" method="post">
 <input type="submit" name="reduce" value="Attack">
 </form>
 
-<h2>Player 1 has <%=$game.player1.points%> points</h2>
-<h2>Player 2 has <%=$game.player2.points%> points</h2>
+<h2>Player 1 has <%=@game.player1.points%> points</h2>
+<h2>Player 2 has <%=@game.player2.points%> points</h2>
 
-<h2>"<%=$game.current_turn.name%> is making a move"</h2>
+<h2>"<%=@game.current_turn.name%> is making a move"</h2>

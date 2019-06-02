@@ -8,6 +8,10 @@ require './lib/game'
 class Battle < Sinatra::Base
   enable :sessions
   
+  before do
+    @game = Game.instance
+  end
+  
   get '/' do
     erb :index
   end
@@ -15,7 +19,7 @@ class Battle < Sinatra::Base
   post '/names' do
     player1 = Player.new(params[:player1])
     player2 = Player.new(params[:player2])
-    $game = Game.new(player1, player2)
+    @game = Game.create(player1, player2)
     redirect '/play'
   end
 
@@ -24,9 +28,10 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    $game.attack($game.current_turn)
-    $game.switch_turn
-    redirect '/result' if $game.current_turn.points == 0
+    @game.attack(@game.current_turn)
+    @game.switch_turn
+    # ideally I want this logic to be in Model and not in Controller
+    redirect '/result' if @game.current_turn.points == 0
     redirect '/play'
   end
 

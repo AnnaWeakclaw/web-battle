@@ -25,4 +25,9 @@ describe Game do
     expect(player2).to receive(:points=)
     game.attack(player1)
   end
+
+  it "has a class method to store its own instance variable" do
+    game1 = Game.create(player1, player1)
+    expect(Game.instance).to eq(game1)
+  end
 end
